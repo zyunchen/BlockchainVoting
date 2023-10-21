@@ -7,12 +7,18 @@ spring:
     password: coen275!
     driver-class-name: com.mysql.jdbc.Driver
 
-#    jndi-name: java:jboss/datasources/customers
-
-jpa:
-  properties:
+  jpa:
     hibernate:
-      hbm2ddl:
-        auto: create-drop
+      ddl-auto: update
+
+  #    jndi-name: java:jboss/datasources/customers
+
+
 server:
   port: 8888
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
