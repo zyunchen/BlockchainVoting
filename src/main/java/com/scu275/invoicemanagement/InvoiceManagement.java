@@ -1,13 +1,13 @@
-package com.scu275.blockchainvoting;
+package com.scu275.invoicemanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BlockChainVotingApplication {
+public class InvoiceManagement {
 
     public static void main(String[] args) {
-        SpringApplication.run(BlockChainVotingApplication.class, args);
+        SpringApplication.run(InvoiceManagement.class, args);
     }
 
 }

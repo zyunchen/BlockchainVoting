@@ -1,4 +1,4 @@
-package com.scu275.blockchainvoting.entity;
+package com.scu275.invoicemanagement.entity;
 
 // 在一个独立的包下创建仓库接口
 

@@ -2,7 +2,7 @@
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/blockchain_voting?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/invoice_management?serverTimezone=UTC
     username: root
     password: coen275!
     driver-class-name: com.mysql.jdbc.Driver

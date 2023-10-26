@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.scu275</groupId>
-    <artifactId>BlockChainVoting</artifactId>
+    <artifactId>InvoiceManagement</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>BlockChainVoting</name>
-    <description>BlockChainVoting</description>
+    <name>InvoiceManagement</name>
+    <description>InvoiceManagement</description>
     <properties>
         <java.version>17</java.version>
     </properties>
