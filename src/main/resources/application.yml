@@ -10,6 +10,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  main:
+    allow-circular-references: true
 
   #    jndi-name: java:jboss/datasources/customers
 
