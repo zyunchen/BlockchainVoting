@@ -33,8 +33,4 @@ public class UserController {
         return userService.signUpUser(signUpDto);
     }
 
-    @PostMapping("/login")
-    public Result<String> authenticateUser(@RequestBody LoginDto loginDto) {
-        return userService.login(loginDto);
-    }
 }
