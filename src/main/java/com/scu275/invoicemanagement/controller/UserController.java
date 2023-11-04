@@ -23,9 +23,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private UserRepository userRepository;
-
 
     @PostMapping("/signup")
     @Operation(summary = "signup", description = "signup user")
