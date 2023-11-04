@@ -7,6 +7,8 @@ import com.scu275.invoicemanagement.entity.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerService {
 
@@ -20,5 +22,9 @@ public class CustomerService {
         customerRepository.save(customer);
         return Result.success("create customer successfully");
 
+    }
+
+    public List<Customer> getAll(){
+        return customerRepository.findAll();
     }
 }
