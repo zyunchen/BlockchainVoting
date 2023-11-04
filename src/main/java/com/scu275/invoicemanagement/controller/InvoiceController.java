@@ -22,7 +22,14 @@ public class InvoiceController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "get Invoice by Id", description = "get invoice by id ")
     public  Result<Invoice> getInvocieById(@PathVariable Long id){
         return invoiceService.getInvoiceById(id);
+    }
+
+    @PatchMapping("/{id}")
+    @Operation(summary = "modify invoice by id ", description = "modify invoice by id ")
+    public  Result<String> modifyInvoice(@PathVariable Long id, @RequestBody InvoiceDto invoiceDto) {
+        return invoiceService.modifyInvoice(id, invoiceDto);
     }
 }
