@@ -50,6 +50,16 @@ public class InvoiceService {
         }
     }
 
+    public Result<String> deleteInvoice(Long id){
+        Optional<Invoice> invoice = invoiceRepository.findById(id);
+        if(invoice.isPresent()){
+            invoiceRepository.deleteById(id);
+            return Result.success("Delete successfully");
+        }else{
+            return Result.failed("can not find original invoice");
+        }
+    }
+
     private void saveDto(InvoiceDto invoiceDto, Invoice invoice){
         invoice.setPrice(invoiceDto.getPrice());
 
