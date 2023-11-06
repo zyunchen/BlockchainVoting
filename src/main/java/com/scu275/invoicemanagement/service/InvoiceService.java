@@ -2,11 +2,11 @@ package com.scu275.invoicemanagement.service;
 
 import com.scu275.invoicemanagement.common.result.Result;
 import com.scu275.invoicemanagement.dto.InvoiceDto;
-import com.scu275.invoicemanagement.dto.SignUpDto;
 import com.scu275.invoicemanagement.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,6 +26,12 @@ public class InvoiceService {
         saveDto(invoiceDto, invoice);
         return Result.success("create invoice success");
     }
+
+
+    public List<Invoice> getAll(){
+        return invoiceRepository.findAll();
+    }
+
 
     public Result<Invoice> getInvoiceById(Long id){
         Optional<Invoice> invoice = invoiceRepository.findById(id);
