@@ -8,6 +8,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -28,10 +29,14 @@ public class Invoice {
 
     private double tax;
 
+    private String status;
+
 
     @CreatedDate
     @Column(updatable = false,nullable = false)
     private Date creationDate;
+    @Temporal(TemporalType.DATE)
+    private Date dueDate;
 
     @LastModifiedDate
     @Column(nullable = false)
