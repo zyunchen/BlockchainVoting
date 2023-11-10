@@ -46,6 +46,7 @@ public class InvoiceService {
     }
 
     public Result<String> modifyInvoice(Long id, InvoiceDto invoiceDto){
+        System.out.println("id is " + id);
         Optional<Invoice> invoice = invoiceRepository.findById(id);
         if(invoice.isPresent()){
             Invoice invoiceEntity = invoice.get();
@@ -69,14 +70,17 @@ public class InvoiceService {
     private void saveDto(InvoiceDto invoiceDto, Invoice invoice){
         invoice.setPrice(invoiceDto.getPrice());
 
-        Optional<User> user = userRepository.findById(invoiceDto.getCreateUserId());
-        if (user.isPresent()){
-            invoice.setCreateUser(user.get());
+        if(invoiceDto.getCreateUserId() != null) {
+            Optional<User> user = userRepository.findById(invoiceDto.getCreateUserId());
+            if (user.isPresent()) {
+                invoice.setCreateUser(user.get());
+            }
         }
-
-        Optional<Customer> customer = customerRepository.findById(invoiceDto.getCustomerId());
-        if (customer.isPresent()){
-            invoice.setCustomer(customer.get());
+        if(invoiceDto.getCustomerId() != null) {
+            Optional<Customer> customer = customerRepository.findById(invoiceDto.getCustomerId());
+            if (customer.isPresent()) {
+                invoice.setCustomer(customer.get());
+            }
         }
 
         invoice.setTax(invoiceDto.getTax());

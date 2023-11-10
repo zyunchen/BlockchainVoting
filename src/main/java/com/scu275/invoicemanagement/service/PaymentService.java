@@ -22,7 +22,7 @@ public class PaymentService {
     public Result<String> createPayment(PaymentDto paymentDto){
         Payment payment = new Payment();
         saveDto(paymentDto, payment);
-        return Result.success("create invoice success");
+        return Result.success("create payment success");
     }
 
     public List<Payment> getPaymentsByInvoiceId(Long invoiceId){
