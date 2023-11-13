@@ -16,6 +16,26 @@ spring:
   #    jndi-name: java:jboss/datasources/customers
 
 
+  mail:
+    host: smtp.gmail.com
+    username: procodedemo@gmail.com
+    password: ggqzkvmsuhdhhzwp
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+
+mail:
+  fromMail:
+    addr: procodedemo@gmail.com
+
+
+
 server:
   port: 8888
 

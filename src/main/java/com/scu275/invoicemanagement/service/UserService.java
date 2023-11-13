@@ -6,6 +6,7 @@ import com.scu275.invoicemanagement.dto.LoginDto;
 import com.scu275.invoicemanagement.dto.SignUpDto;
 import com.scu275.invoicemanagement.entity.User;
 import com.scu275.invoicemanagement.entity.UserRepository;
+import com.scu275.invoicemanagement.mail.Mail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,6 +30,9 @@ public class UserService implements UserDetailsService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
+    private MailServiceImpl mailService;
+
+    @Autowired
     private AuthenticationManager authenticationManager;
 
 
@@ -46,6 +50,13 @@ public class UserService implements UserDetailsService {
         user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
         userRepository.save(user);
         System.out.println("user name not exist -------sign up success");
+
+        Mail mail = new Mail();
+        mail.setTo(user.getUsername());
+        mail.setSubject("Register successfully");
+        mail.setContent("Register successfully");
+        mailService.sendMail(mail);
+
 
         return Result.success("register success");
     }
