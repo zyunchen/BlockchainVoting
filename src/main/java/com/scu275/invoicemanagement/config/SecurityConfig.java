@@ -73,6 +73,9 @@ public class SecurityConfig {
             a.anyRequest().permitAll();
         });
 
+        http.securityContext((securityContext) -> securityContext
+			.requireExplicitSave(false)
+		);
 
         http.formLogin(a->{
             a.permitAll();

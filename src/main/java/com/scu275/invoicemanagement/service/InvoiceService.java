@@ -31,15 +31,10 @@ public class InvoiceService {
     }
 
 
-    public List<Invoice> getByuserId(Long uid){
-
+    public List<Invoice> getAll(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Object user = auth.getPrincipal();
-        System.out.println("principal is " + user + ", auth: " + auth + ", " + auth.hashCode());
-//        System.out.println("user id is " + user.getUId());
-
-
-        return invoiceRepository.findByCreateUser_uId(uid);
+        User user = (User) auth.getPrincipal();
+        return invoiceRepository.findByCreateUser_uId(user.getUId());
     }
 
 

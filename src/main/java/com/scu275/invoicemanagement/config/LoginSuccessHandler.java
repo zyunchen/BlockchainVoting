@@ -24,17 +24,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         response.setStatus(HttpStatus.OK.value());
         User userDetails = (User) authentication.getPrincipal();
 
-        HttpSession session = request.getSession();
-        //第二步：将想要保存到数据存入session中
-        session.setAttribute("uid",userDetails.getUId());
-
-
-
-
         Result res = new Result<>();
         res.setCode("0000");
         res.setMsg("login success");
-        res.setData(userDetails);
+        res.setData(userDetails); //FIXME: should not return password
 
         response.getWriter().write(JSON.toJSONString(res));
     }

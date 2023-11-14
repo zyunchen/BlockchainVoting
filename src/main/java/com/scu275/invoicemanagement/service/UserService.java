@@ -81,11 +81,6 @@ public class UserService implements UserDetailsService {
 
         User userDetails = (User) authentication.getPrincipal();
 
-        System.out.println("authentication: " + authentication + ", " + authentication.hashCode() + ", userDetails: " + userDetails.getUId());
-
-
-
-
         return Result.success(userDetails);
     }
 
