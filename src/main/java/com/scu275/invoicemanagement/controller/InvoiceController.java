@@ -28,10 +28,10 @@ public class InvoiceController {
         return invoiceService.getInvoiceById(id);
     }
 
-    @GetMapping("")
+    @GetMapping("/user/{userid}")
     @Operation(summary = "get all invoices", description = "get all invoices ")
-    public List<Invoice> getInvocies(){
-        return invoiceService.getAll();
+    public List<Invoice> getInvocies(@PathVariable Long userid){
+        return invoiceService.getByuserId(userid);
     }
 
     @PatchMapping("/{id}")
