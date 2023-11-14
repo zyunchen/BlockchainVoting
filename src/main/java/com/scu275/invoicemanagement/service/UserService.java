@@ -39,6 +39,17 @@ public class UserService implements UserDetailsService {
     public Result<String> signUpUser(SignUpDto signUpDto){
         System.out.println("begin to sign up user-------");
 
+        //use regrex to check if username is a valid email
+        String emailRegrex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+        
+        if(!signUpDto.getUsername().matches(emailRegrex)){
+            System.out.println("username is not a valid email");
+            return Result.failed("Username is not a valid email");
+        }
+
         // checking for username exists in a database
         if(userRepository.existsByUsername(signUpDto.getUsername())){
             System.out.println("user name exist -------sign up failed");
