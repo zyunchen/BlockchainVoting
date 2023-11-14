@@ -4,6 +4,8 @@ import com.scu275.invoicemanagement.common.result.Result;
 import com.scu275.invoicemanagement.dto.InvoiceDto;
 import com.scu275.invoicemanagement.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +23,7 @@ public class InvoiceService {
     @Autowired
     private CustomerRepository customerRepository;
 
+
     public Result<String> createInvocie(InvoiceDto invoiceDto){
         Invoice invoice = new Invoice();
         saveDto(invoiceDto, invoice);
@@ -28,8 +31,15 @@ public class InvoiceService {
     }
 
 
-    public List<Invoice> getAll(){
-        return invoiceRepository.findAll();
+    public List<Invoice> getByuserId(Long uid){
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Object user = auth.getPrincipal();
+        System.out.println("principal is " + user + ", auth: " + auth + ", " + auth.hashCode());
+//        System.out.println("user id is " + user.getUId());
+
+
+        return invoiceRepository.findByCreateUser_uId(uid);
     }
 
 

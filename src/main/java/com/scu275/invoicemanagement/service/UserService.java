@@ -7,6 +7,7 @@ import com.scu275.invoicemanagement.dto.SignUpDto;
 import com.scu275.invoicemanagement.entity.User;
 import com.scu275.invoicemanagement.entity.UserRepository;
 import com.scu275.invoicemanagement.mail.Mail;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -70,6 +71,22 @@ public class UserService implements UserDetailsService {
 
 
         return Result.success("register success");
+    }
+
+
+    public Result<User> login(LoginDto loginDto) {
+        Authentication authentication = authenticationManager
+                .authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        User userDetails = (User) authentication.getPrincipal();
+
+        System.out.println("authentication: " + authentication + ", " + authentication.hashCode() + ", userDetails: " + userDetails.getUId());
+
+
+
+
+        return Result.success(userDetails);
     }
 
 
