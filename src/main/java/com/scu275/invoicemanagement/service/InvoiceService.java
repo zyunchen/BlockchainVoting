@@ -91,6 +91,7 @@ public class InvoiceService {
         invoice.setTax(invoiceDto.getTax());
         invoice.setProductDescription(invoiceDto.getProductDescription());
         invoice.setQuantity(invoiceDto.getQuantity());
+        invoice.setDueDate(invoiceDto.getDueDate());
         invoiceRepository.save(invoice);
     }
 }

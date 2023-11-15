@@ -21,6 +21,8 @@ public class InvoiceDto {
 
     private double tax;
 
+    private Date dueDate;
+
     private Date creationDate;
 
     private Date modificationDate;
