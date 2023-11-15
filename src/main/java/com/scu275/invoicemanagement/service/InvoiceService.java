@@ -26,6 +26,7 @@ public class InvoiceService {
 
     public Result<String> createInvocie(InvoiceDto invoiceDto){
         Invoice invoice = new Invoice();
+        invoice.setStatus(Invoice.InvoiceStatus.NOTPAIED.getStatus());
         saveDto(invoiceDto, invoice);
         return Result.success("create invoice success");
     }
