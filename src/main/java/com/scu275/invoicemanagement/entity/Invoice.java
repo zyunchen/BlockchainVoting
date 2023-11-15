@@ -49,11 +49,11 @@ public class Invoice {
 
 
     public enum InvoiceStatus {
+
         PARTIAL("Partial Payment"),
         COMPLETED("Payment Completed"),
         OVERDUE("Overdue"),
         NOTPAIED("Not paied");
-
 
 
         private final String status;

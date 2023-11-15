@@ -17,5 +17,9 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
     @Query("UPDATE Invoice i SET i.status = :status WHERE i.invoiceId = :invoiceId")
     void updateStatusByInvoiceId(@Param("invoiceId") Long invoiceId, @Param("status") String status);
 
-//    public List<Invoice> findInvoicesDueTodayOrEarlier(Date dueDate);
+    @Query("SELECT i FROM Invoice i WHERE i.dueDate <= CURRENT_DATE AND (i.status IS NULL OR i.status NOT IN (:overdue, :completed))")
+
+    List<Invoice> findDueInvoices(@Param("overdue") String overdue, @Param("completed") String completed);
+
+
 }
