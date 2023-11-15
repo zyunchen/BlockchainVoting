@@ -2,7 +2,7 @@
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/invoice_management?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/invoice_management?serverTimezone=UTC&createDatabaseIfNotExist=true
     username: root
     password: Coen275!
     driver-class-name: com.mysql.jdbc.Driver

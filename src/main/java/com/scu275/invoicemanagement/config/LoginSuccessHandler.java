@@ -8,6 +8,7 @@ import com.scu275.invoicemanagement.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.security.core.Authentication;
@@ -21,15 +22,12 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         response.setContentType("application/json; charset=utf-8");
         response.setStatus(HttpStatus.OK.value());
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-
-
-
+        User userDetails = (User) authentication.getPrincipal();
 
         Result res = new Result<>();
         res.setCode("0000");
         res.setMsg("login success");
-        res.setData(userDetails);
+        res.setData(userDetails); //FIXME: should not return password
 
         response.getWriter().write(JSON.toJSONString(res));
     }

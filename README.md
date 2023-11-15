@@ -61,3 +61,5 @@ Based on the above requirements, we can design the following table structures:
    - `ReminderType` (VARCHAR, e.g., 'Overdue Reminder', 'Pending Reminder', etc.)
    - `ReminderDate` (DATE)
    - `SendStatus` (VARCHAR, e.g., 'Sent', 'Not Sent', etc.)
+
+swagger-ui: http://localhost:8888/swagger-ui/index.html
