@@ -34,12 +34,14 @@ public class Invoice {
 
     @CreatedDate
     @Column(updatable = false,nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date creationDate;
     @Temporal(TemporalType.DATE)
     private Date dueDate;
 
     @LastModifiedDate
     @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date modificationDate;
 
     @ManyToOne

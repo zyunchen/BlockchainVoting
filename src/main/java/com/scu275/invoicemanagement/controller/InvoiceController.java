@@ -28,7 +28,7 @@ public class InvoiceController {
         return invoiceService.getInvoiceById(id);
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     @Operation(summary = "get all invoices", description = "get all invoices ")
     public List<Invoice> getInvocies(){
         return invoiceService.getAll();
