@@ -40,9 +40,9 @@ public class PaymentService {
         ;
         double amount_left = amount - invoice.getPrice();
         if ( amount_left >= 0) {
-            invoiceRepository.updateStatusByInvoiceId(paymentDto.getInvoiceId(), "Payment Complete"); //TODO
+            invoiceRepository.updateStatusByInvoiceId(paymentDto.getInvoiceId(), Invoice.InvoiceStatus.PARTIAL.getStatus());
         } else{
-            invoiceRepository.updateStatusByInvoiceId(paymentDto.getInvoiceId(), "Partical payments"); //TODO
+            invoiceRepository.updateStatusByInvoiceId(paymentDto.getInvoiceId(), Invoice.InvoiceStatus.COMPLETED.getStatus());
         }
 
         Mail mail = new Mail();

@@ -48,6 +48,31 @@ public class Invoice {
     private User createUser;
 
 
+    public enum InvoiceStatus {
+        PARTIAL("Partial Payment"),
+        COMPLETED("Payment Completed"),
+        OVERDUE("Overdue");
+
+        private final String status;
+
+        InvoiceStatus(String status) {
+            this.status = status;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public static InvoiceStatus fromString(String text) {
+            for (InvoiceStatus status : InvoiceStatus.values()) {
+                if (status.status.equalsIgnoreCase(text)) {
+                    return status;
+                }
+            }
+            throw new IllegalArgumentException("No constant with text " + text + " found");
+        }
+    }
+
 
 
 }
