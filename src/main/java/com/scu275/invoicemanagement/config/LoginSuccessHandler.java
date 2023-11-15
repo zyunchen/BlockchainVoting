@@ -2,7 +2,6 @@ package com.scu275.invoicemanagement.config;
 
 import com.alibaba.fastjson2.JSON;
 import com.scu275.invoicemanagement.common.result.Result;
-import com.scu275.invoicemanagement.common.result.ResultCode;
 import com.scu275.invoicemanagement.entity.User;
 import com.scu275.invoicemanagement.service.UserService;
 import jakarta.servlet.ServletException;
@@ -27,7 +26,8 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         Result res = new Result<>();
         res.setCode("0000");
         res.setMsg("login success");
-        res.setData(userDetails); //FIXME: should not return password
+        userDetails.setPassword("");
+        res.setData(userDetails);
 
         response.getWriter().write(JSON.toJSONString(res));
     }

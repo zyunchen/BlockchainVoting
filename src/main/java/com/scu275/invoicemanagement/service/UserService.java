@@ -80,6 +80,7 @@ public class UserService implements UserDetailsService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         User userDetails = (User) authentication.getPrincipal();
+        userDetails.setPassword("");
 
         return Result.success(userDetails);
     }
