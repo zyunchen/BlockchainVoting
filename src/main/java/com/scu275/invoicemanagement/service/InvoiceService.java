@@ -26,7 +26,10 @@ public class InvoiceService {
 
     public Result<String> createInvocie(InvoiceDto invoiceDto){
         Invoice invoice = new Invoice();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) auth.getPrincipal();
         invoice.setStatus(Invoice.InvoiceStatus.NOTPAIED.getStatus());
+        invoice.setCreateUser(user);
         saveDto(invoiceDto, invoice);
         return Result.success("create invoice success");
     }
@@ -76,12 +79,6 @@ public class InvoiceService {
     private void saveDto(InvoiceDto invoiceDto, Invoice invoice){
         invoice.setPrice(invoiceDto.getPrice());
 
-        if(invoiceDto.getCreateUserId() != null) {
-            Optional<User> user = userRepository.findById(invoiceDto.getCreateUserId());
-            if (user.isPresent()) {
-                invoice.setCreateUser(user.get());
-            }
-        }
         if(invoiceDto.getCustomerId() != null) {
             Optional<Customer> customer = customerRepository.findById(invoiceDto.getCustomerId());
             if (customer.isPresent()) {
