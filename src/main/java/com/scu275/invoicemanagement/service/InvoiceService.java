@@ -23,6 +23,9 @@ public class InvoiceService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Autowired
+    private PaymentRepository paymentRepository;
+
 
     public Result<String> createInvocie(InvoiceDto invoiceDto){
         Invoice invoice = new Invoice();
@@ -69,6 +72,7 @@ public class InvoiceService {
     public Result<String> deleteInvoice(Long id){
         Optional<Invoice> invoice = invoiceRepository.findById(id);
         if(invoice.isPresent()){
+            paymentRepository.deleteByInvoiceInvoiceId(id);
             invoiceRepository.deleteById(id);
             return Result.success("Delete successfully");
         }else{
