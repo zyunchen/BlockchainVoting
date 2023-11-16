@@ -38,8 +38,9 @@ public class PaymentService {
         }
         Invoice invoice = invoiceRepository.findById(paymentDto.getInvoiceId()).orElseThrow(() -> new RuntimeException("Invoice 不存在"));
         ;
-        double amount_left = amount - invoice.getPrice();
-        if ( amount_left >= 0) {
+        invoiceRepository.updatePaidAmountByInvoiceId(paymentDto.getInvoiceId(), amount);
+        double amount_left =  invoice.getPrice() - amount;
+        if ( amount_left > 0) {
             invoiceRepository.updateStatusByInvoiceId(paymentDto.getInvoiceId(), Invoice.InvoiceStatus.PARTIAL.getStatus());
         } else{
             invoiceRepository.updateStatusByInvoiceId(paymentDto.getInvoiceId(), Invoice.InvoiceStatus.COMPLETED.getStatus());

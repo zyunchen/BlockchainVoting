@@ -18,6 +18,7 @@ public class InvoiceDto {
     private int quantity;
 
     private double price;
+    private double paidAmount;
 
     private double tax;
 
