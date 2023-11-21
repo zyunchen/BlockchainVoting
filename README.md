@@ -22,9 +22,6 @@ Based on the above requirements, we can design the following table structures:
    - `UserID` (Primary Key, INT)
    - `Email` (VARCHAR)
    - `Password` (VARCHAR)
-   - `FirstName` (VARCHAR)
-   - `LastName` (VARCHAR)
-   - Other personal information fields (e.g., Address, ContactNumber, etc.)
 
 2. **Invoice Table**:
 
@@ -36,14 +33,13 @@ Based on the above requirements, we can design the following table structures:
    - `Tax` (DECIMAL)
    - `CreationDate` (DATE)
    - `ModificationDate` (DATE)
+   - `DueDate` (DATE)
 
 3. **Customer Table**:
 
    - `CustomerID` (Primary Key, INT)
-   - `FirstName` (VARCHAR)
-   - `LastName` (VARCHAR)
+   - `Name` (VARCHAR)
    - `Email` (VARCHAR)
-   - Other contact information fields
 
 4. **Payment Table**:
 
@@ -51,15 +47,5 @@ Based on the above requirements, we can design the following table structures:
    - `InvoiceID` (Foreign Key, referencing Invoice table, INT)
    - `Amount` (DECIMAL)
    - `PaymentDate` (DATE)
-   - `PaymentStatus` (VARCHAR, e.g., 'Partial Payment', 'Overdue Payment', etc.)
-
-5. **Reminder Table**:
-
-   - `ReminderID` (Primary Key, INT)
-   - `CustomerID` (Foreign Key, referencing Customer table, INT)
-   - `InvoiceID` (Foreign Key, referencing Invoice table, INT)
-   - `ReminderType` (VARCHAR, e.g., 'Overdue Reminder', 'Pending Reminder', etc.)
-   - `ReminderDate` (DATE)
-   - `SendStatus` (VARCHAR, e.g., 'Sent', 'Not Sent', etc.)
 
 swagger-ui: http://localhost:8888/swagger-ui/index.html
